@@ -1,18 +1,22 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="h-100">
+		<router-link :to="{ name: 'home'}">Home</router-link>
+		<br>
+		<router-link :to="{ name: 'list'}">Books</router-link>
+		<transition name="fade" mode="out-in">
+			<router-view :key="$route.path"></router-view>
+		</transition>
+    <v-dialog />
+    <BooksFormModal/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import BooksFormModal from './components/modals/BooksFormModal';
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  components: {BooksFormModal}
 }
 </script>
 
